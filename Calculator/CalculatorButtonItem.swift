@@ -63,3 +63,9 @@ extension CalculatorButtonItem {
 }
 
 extension CalculatorButtonItem: Hashable {}
+
+extension CalculatorButtonItem: CustomStringConvertible {
+  var description: String {
+    return title
+  }
+}

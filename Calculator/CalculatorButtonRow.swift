@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CalculatorButtonRow: View {
+  @EnvironmentObject var model: CalculatorModel
   let row: [CalculatorButtonItem]
   var body: some View {
     HStack {
@@ -15,7 +16,7 @@ struct CalculatorButtonRow: View {
         CalculatorButton(title: item.title,
                          size: item.size,
                          backgroundColorName: item.backgroundColorName) {
-          print("Button: \(item.title)")
+          self.model.apply(item)
         }
       }
     }
@@ -25,5 +26,6 @@ struct CalculatorButtonRow: View {
 struct CalculatorButtonRow_Previews: PreviewProvider {
   static var previews: some View {
     CalculatorButtonRow(row: [.digit(1), .digit(2), .digit(3), .op(.plus)])
+      .environmentObject(CalculatorModel())
   }
 }
